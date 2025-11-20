@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Резюме – Бродовський Євгеній Володимирович</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Шрифти -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Іконки -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --accent: #06a05a;
+      --accent-dark: #038046;
+      --accent-blue: #1976d2;
+      --text-main: #ffffff;
+      --text-dark: #222222;
+      --light-bg: #f5f1ec;
+      --line: #d0c4b8; /* контрастніша лінія таймлайну */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #dcdcdc;
+    }
+
+    /* ===== HERO-КАРТКА ===== */
+
+    .hero {
+      max-width: 1200px;
+      margin: 24px auto 32px; /* єдиний нижній відступ між блоками */
+      background: #000; /* фон як fallback, зелений прибрали */
+      color: var(--text-main);
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px; /* єдиний радіус */
+      min-height: 260px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* єдина тінь */
+    }
+
+    /* Дзеркальне розмите фото по всій hero-панелі */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("resources/background1.jpg") center/cover no-repeat; /* ТУТ resources/ */
+      transform: scaleX(-1);       /* ефект дзеркала */
+      filter: blur(6px) brightness(0.45); /* розмиття + затемнення, щоб текст читався */
+      z-index: 0;
+    }
+
+    .hero-left {
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+
+    .hero-role {
+      font-size: 16px;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 22px;
+    }
+
+    .hero-contacts {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      font-size: 14px;
+    }
+
+    .hero-contacts li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-contacts i {
+      width: 18px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .hero-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.18);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .hero-social a:hover {
+      transform: translateY(-2px);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-photo-wrapper {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .hero-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.1);
+      position: relative;
+      z-index: 0;
+    }
+
+    /* затемнення правої частини фото */
+    .hero-photo-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.35), transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-plus {
+      position: absolute;
+      top: 50%;
+      left: calc(100% * 2.2 / 3.5 - 30px);
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-blue);
+      color: #ffffff;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.28);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .section-title-center {
+      max-width: 1100px;
+      margin: 0 auto 16px;
+      text-align: center;
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333333;
+    }
+
+    /* ===== КАРТОЧКА "ПРО СЕБЕ" ПІД КАРТКОЮ ===== */
+
+    .about-section {
+      background: #dcdcdc;
+      padding: 0 16px 0;
+      margin-bottom: 32px;
+    }
+
+    .about-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 24px 32px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 1px солид #e0e0e0;
+    }
+
+    .about-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555555;
+      text-align: justify;
+    }
+
+    .about-text + .about-text {
+      margin-top: 10px;
+    }
+
+    /* ===== КАРТКИ ЯКОСТІ / МОВИ / НАВИЧКИ ===== */
+
+    .info-cards-section {
+      background: #dcdcdc;
+      padding: 0 16px 0;
+      margin-bottom: 32px;
+    }
+
+    .info-cards {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 24px 32px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border: 1px солид #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 220px;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    }
+
+    .info-card-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #333333;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card-title i {
+      color: var(--accent-dark);
+      font-size: 16px;
+    }
+
+    .qualities-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 6px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .qualities-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qualities-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px солид var(--accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      margin-top: 1px;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    .lang-row {
+      margin-bottom: 10px;
+    }
+
+    .lang-label {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .lang-label span:last-child {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08ем;
+    }
+
+    .lang-bar {
+      height: 6px;
+      border-radius: 4px;
+      background: #eeeeee;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      background: var(--accent-dark);
+      width: 0;
+    }
+
+    .lang-ua  { width: 100%; }
+    .lang-ru  { width: 100%; }
+    .lang-en  { width: 60%;  }
+    .lang-pl  { width: 35%;  }
+
+    .skills-circles {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 14px;
+    }
+
+    .skill-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .skill-circle {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent-dark) calc(var(--p) * 1turn), #e5e5e5 0);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .skill-circle:hover {
+      transform: scale(1.03);
+    }
+
+    .skill-circle::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+
+    .skill-percent {
+      position: relative;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1;
+      text-align: center;
+    }
+
+    .skill-label {
+      margin-top: 8px;
+      font-size: 11px;
+      text-align: center;
+      color: #555;
+    }
+
+    .skill-90 { --p: 0.90; }
+    .skill-80 { --p: 0.80; }
+    .skill-60 { --p: 0.60; }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 12px;
+      row-gap: 4px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .skills-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skills-list i {
+      font-size: 9px;
+      margin-top: 1px;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    /* ===== ТАЙМЛАЙН ШЛЯХУ ===== */
+
+    .timeline-section {
+      max-width: 1200px;
+      margin: 0 auto 32px;
+      background: var(--light-bg);
+      padding: 40px 40px 50px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .timeline-title {
+      text-align: center;
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.22ем;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+      color: var(--text-dark);
+    }
+
+    .timeline {
+      position: relative;
+      padding: 20px 0 10px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 30px 50px;
+      box-sizing: border-box;
+    }
+
+    .timeline-item.left {
+      text-align: right;
+      padding-right: 80px;
+    }
+
+    .timeline-item.right {
+      margin-left: 50%;
+      padding-left: 80px;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      top: 40px; /* центр маркера вирівнюємо з заголовком */
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px солид var(--accent-dark);
+      box-shadow: 0 0 0 4px rgba(3, 128, 70, 0.12);
+    }
+
+    .timeline-item.left .timeline-marker {
+      right: -10px;
+    }
+
+    .timeline-item.right .timeline-marker {
+      left: -10px;
+    }
+
+    .timeline-marker.work::after {
+      content: "\f0b1";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 9px;
+      color: var(--accent-dark);
+    }
+
+    .timeline-marker.edu::after {
+      content: "\f19d";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 9px;
+      color: var(--accent-dark);
+    }
+
+    .timeline-marker.promo::after {
+      content: "\f062"; /* стрілка вгору як іконка підвищення */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 9px;
+      color: var(--accent-dark);
+    }
+
+    .timeline-card-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: #333333;
+    }
+
+    .timeline-card-sub {
+      text-transform: uppercase;
+      letter-spacing: 0.14ем;
+      font-size: 11px;
+      color: #a27b5a;
+      margin-bottom: 6px;
+    }
+
+    .timeline-card-date {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16ем;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .timeline-card-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #444;
+      margin: 0;
+    }
+
+    /* невелике зображення для QR-коду в таймлайні */
+    .timeline-qr {
+      margin-top: 8px;
+      width: 80px;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    /* ===== НИЖНЯ ЧАСТИНА РЕЗЮМЕ ===== */
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      background: #ffffff;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+      gap: 40px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .sidebar {
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .sidebar-block {
+      margin-bottom: 22px;
+    }
+
+    .sidebar-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06ем;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-label {
+      font-weight: 600;
+      margin-top: 10px;
+      margin-bottom: 3px;
+    }
+
+    .sidebar p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .sidebar ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    .content {
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .section {
+      margin-bottom: 26px;
+    }
+
+    .section-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent-dark), transparent);
+      margin-top: 5px;
+    }
+
+    .section p {
+      margin: 0 0 6px;
+      line-height: 1.6;
+    }
+
+    /* ===== ПАНЕЛІ З ЛОГОТИПАМИ ШІ ===== */
+
+    .ai-logos-section {
+      background: #dcdcdc;
+      padding: 0 16px 40px;
+    }
+
+    .ai-logos-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ai-logos-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 0.08ем;
+      border-bottom: 2px solid rgba(3, 128, 70, 0.3);
+      padding-bottom: 6px;
+    }
+
+    .ai-logos-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .ai-logo-card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px солид #e0e0e0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      height: 140px; /* прямокутна широка панель */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; /* щоб обрізати зайве */
+    }
+
+    .ai-logo-card a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ai-logo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;        /* бере центр, якщо картинка велика */
+      object-position: center;  /* фокус з центру */
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .ai-logo-card:hover img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-right {
+        min-height: 220px;
+      }
+
+      .hero-plus {
+        display: none;
+      }
+
+      .about-section {
+        padding: 0 10px 0;
+      }
+
+      .about-card {
+        padding: 20px 18px 24px;
+      }
+
+      .info-cards-section {
+        padding: 0 10px 0;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-section {
+        padding: 30px 18px 38px;
+      }
+
+      .timeline::before {
+        left: 18px;
+        transform: none;
+      }
+
+      .timeline-item {
+        width: 100%;
+        margin-left: 0 !important;
+        padding: 24px 16px 24px 48px;
+        text-align: left !important;
+      }
+
+      .timeline-marker {
+        left: 18px !important;
+        right: auto !important;
+        transform: translateY(-50%);
+      }
+
+      .page {
+        padding: 24px 18px 36px;
+        grid-template-columns: 1fr;
+      }
+
+      .ai-logos-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO-БЛОК -->
+  <header class="hero">
+    <div class="hero-left">
+      <h1 class="hero-name">ЄВГЕНІЙ БРОДОВСЬКИЙ</h1>
+      <div class="hero-role">Старший фахівець управління підтримки сервісів</div>
+
+      <ul class="hero-contacts" aria-label="Контактна інформація">
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          <span>Evgeniy.Brodovskyy@fuib.com</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          <span>by.brodowski@pm.me</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <span>+38 063 560 7954</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          <span>м. Кременчук, Полтавська область</span>
+        </li>
+      </ul>
+
+      <div class="hero-social">
+        <a href="https://instagram.com/by.brodowski" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://web.telegram.org/k/#@Brodowski" target="_blank" rel="noreferrer noopener" aria-label="Telegram">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://steamcommunity.com/id/by_brodowski/" target="_blank" rel="noreferrer noopener" aria-label="Steam">
+          <i class="fab fa-steam"></i>
+        </a>
+        <a href="https://github.com/byBrodowski" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrapper">
+        <img src="resources/photo.jpg" alt="Фото Бродовського Євгенія" />
+      </div>
+    </div>
+  </header>
+
+  <!-- КАРТОЧКА ПРО СЕБЕ -->
+  <section class="about-section">
+    <div class="about-card">
+      <h3 class="info-card-title">
+        <i class="fa-solid fa-user"></i>
+        Коротко про мене
+      </h3>
+
+      <p class="about-text">
+        Я спеціаліст команди Help Desk, який цілеспрямовано рухається в бік впровадження рішень на базі штучного інтелекту. У щоденній роботі вже використовую AI-інструменти для аналізу звернень, підготовки відповідей та структурування знань, тому добре розумію, де саме штучний інтелект реально економить час команди і особисто мій.
+      </p>
+
+      <p class="about-text">
+        Паралельно розвиваюся як розробник: пишу PowerShell-скрипти, створюю невеликі боти для автоматизації рутинних процесів у особистому житті, працюю з веб-інтерфейсами та вивчаю сучасні підходи до інтеграції API.
+      </p>
+
+      <p class="about-text">
+        Регулярно експериментую з моделями на кшталт ChatGPT: тестую різні промпт-стратегії, формати відповідей, способи побудови діалогів і сценаріїв, орієнтованих на кінцевого користувача. Комфортно почуваюся на стику «техніка + люди»: можу зібрати вимоги від команди або керівника, разом зі штучним інтелектом проаналізувати найкращий і найшвидший шлях до цілі та виконати поставлене завдання.
+      </p>
+
+      <p class="about-text">
+        Серед моїх досягнень у банку хочу відзначити основні, які пов'язані з штучним інтелектом:
+      </p>
+
+      <p class="about-text">
+        <strong>1)</strong> «Банківський Гуру» у нашому датаспейсі використовує сучасний промптинг, побудований за принципами масштабних компаній, щоб покращити візуальну подачу відповіді й збір контексту перед нею. Наш чат-бот не видає суцільний важкий для читання текст: ми використовуємо структуровані блоки, акценти, доречні скріншоти та перехід на повну інструкцію в Confluence. Бот вітається, пояснює, з якою базою знань працює, наприкінці розповідає, як краще формулювати запит і коректно завершує діалог. Датаспейс налаштований під нашу базу знань, завдяки чому зростає релевантність відповідей і частка інструкцій нашої команди. З доступного функціоналу ми використали максимум і зараз сфокусовані на підтримці та розширенні бази.
+      </p>
+
+      <p class="about-text">
+        <strong>2)</strong> QR-код візитка. Під час опрацювання завдання від керівника — знайти зручний спосіб показати на смартфоні коротку інформацію про керівника — за допомогою ШІ було розроблено рішення: при скануванні QR-коду відкривається контактна картка з телефонами, сайтом банку, посадою, ПІБ співробітника та посиланнями на соцмережі. Підготовлений промпт-опис рішення я передав іншому підрозділу для подальшого розвитку, оскільки команда Help Desk через завантаженість та інші внутрішні проєкти не може взяти на себе повну реалізацію.
+      </p>
+    </div>
+  </section>
+
+  <!-- ТРИ КАРТКИ: ЯКОСТІ / МОВИ / НАВИЧКИ -->
+  <section class="info-cards-section">
+    <div class="info-cards">
+      <!-- ЯКОСТІ -->
+      <div class="info-card">
+        <h3 class="info-card-title">
+          <i class="fa-solid fa-user-check"></i>
+          Особисті якості
+        </h3>
+        <ul class="qualities-list">
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Пунктуальність та відповідальність</span>
+          </li>
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Уважність до деталей</span>
+          </li>
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Чесність та порядність</span>
+          </li>
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Клієнтоорієнтованість і дружелюбність</span>
+          </li>
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Мультизадачність і стресостійкість</span>
+          </li>
+          <li class="qualities-item">
+            <span class="qualities-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Аналітичний склад розуму</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- МОВи -->
+      <div class="info-card">
+        <h3 class="info-card-title">
+          <i class="fa-solid fa-language"></i>
+          Мови
+        </h3>
+
+        <div class="lang-row">
+          <div class="lang-label">
+            <span>Українська</span>
+            <span>Вільно</span>
+          </div>
+          <div class="lang-bar">
+            <div class="lang-bar-fill lang-ua"></div>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-label">
+            <span>Російська</span>
+            <span>Вільно</span>
+          </div>
+          <div class="lang-bar">
+            <div class="lang-bar-fill lang-ru"></div>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-label">
+            <span>Англійська</span>
+            <span>Середній</span>
+          </div>
+          <div class="lang-bar">
+            <div class="lang-bar-fill lang-en"></div>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-label">
+            <span>Польська</span>
+            <span>Вивчаю</span>
+          </div>
+          <div class="lang-bar">
+            <div class="lang-bar-fill lang-pl"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- НАВИЧКИ -->
+      <div class="info-card">
+        <h3 class="info-card-title">
+          <i class="fa-solid fa-chart-pie"></i>
+          Навички
+        </h3>
+
+        <div class="skills-circles">
+          <div class="skill-block">
+            <div class="skill-circle skill-90">
+              <div class="skill-percent">90%</div>
+            </div>
+            <div class="skill-label">Написання HTML коду</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-circle skill-80">
+              <div class="skill-percent">80%</div>
+            </div>
+            <div class="skill-label">Дизайн сайтів</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-circle skill-60">
+              <div class="skill-percent">60%</div>
+            </div>
+            <div class="skill-label">Програмування на C++</div>
+          </div>
+        </div>
+
+        <ul class="skills-list">
+          <li><i class="fa-solid fa-check"></i><span>Використання ШІ</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Офісні програми</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Технічні навички з ПЗ</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Робота з WinSQL</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Бізнес-процеси в банку</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Налаштування LLM-моделей ШІ</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТАЙМЛАЙН: РОБОТА + НАВЧАННЯ -->
+  <section class="timeline-section">
+    <h2 class="timeline-title">Шлях по життю</h2>
+
+    <div class="timeline">
+      <!-- НОВА ПОСАДА: ПІДВИЩЕННЯ -->
+      <article class="timeline-item right">
+        <div class="timeline-marker promo"></div>
+        <h3 class="timeline-card-title">Старший фахівець управління підтримки</h3>
+        <div class="timeline-card-sub">ПУМБ</div>
+        <div class="timeline-card-date">
+          <time datetime="2025-06">ЧЕРВЕНЬ 2025</time> – ДОТЕПЕР
+        </div>
+        <p class="timeline-card-text">
+          Отримав підвищення за ефективну роботу.
+        </p>
+      </article>
+
+      <!-- НОВИЙ ПУНКТ: НАВЧАННЯ PROJECTOR МІЖ ФАХІВЦЕМ І СТАРШИМ -->
+      <article class="timeline-item left">
+        <div class="timeline-marker edu"></div>
+        <h3 class="timeline-card-title">Навчання по Web Design в школі Projector від банку</h3>
+        <div class="timeline-card-sub">Web Design, Projector</div>
+        <div class="timeline-card-date">
+          <time datetime="2025-02">ЛЮТИЙ 2025</time> – <time datetime="2025-05">ТРАВЕНЬ 2025</time>
+        </div>
+        <img src="resources/webdesign-projector-qr.png"
+             alt="QR-код на сертифікат Web Design Projector"
+             class="timeline-qr" />
+      </article>
+
+      <!-- ОНОВЛЕНА ПОПЕРЕДНЯ ПОСАДА -->
+      <article class="timeline-item right">
+        <div class="timeline-marker work"></div>
+        <h3 class="timeline-card-title">Фахівець управління підтримки сервісів</h3>
+        <div class="timeline-card-sub">ПУМБ</div>
+        <div class="timeline-card-date">
+          <time datetime="2024-06">ЧЕРВЕНЬ 2024</time> – <time datetime="2025-06">ЧЕРВЕНЬ 2025</time>
+        </div>
+        <p class="timeline-card-text">
+          Технічна підтримка співробітників банку, робота з базами даних, Kibana та Grafana.
+          Розвиваю базу знань, промпти для ШІ «Банківський Гуру» та верстаю сторінки в Confluence.
+        </p>
+      </article>
+
+      <article class="timeline-item left">
+        <div class="timeline-marker work"></div>
+        <h3 class="timeline-card-title">Консультант з інформування клієнтів</h3>
+        <div class="timeline-card-sub">ПУМБ</div>
+        <div class="timeline-card-date">
+          <time datetime="2024-04">КВІТЕНЬ 2024</time> – <time datetime="2024-06">ЧЕРВЕНЬ 2024</time>
+        </div>
+        <p class="timeline-card-text">
+          Вхідна лінія ПУМБ: консультації клієнтів щодо застосунку та основних банківських продуктів.
+        </p>
+      </article>
+
+      <article class="timeline-item right">
+        <div class="timeline-marker edu"></div>
+        <h3 class="timeline-card-title">
+          Кременчуцький національний університет ім. Михайла Остроградського
+        </h3>
+        <div class="timeline-card-sub">Менеджмент (бакалавр)</div>
+        <div class="timeline-card-date">
+          <time datetime="2021">2021</time> – <time datetime="2025">2025</time>
+        </div>
+        <p class="timeline-card-text">
+          Бакалавр менеджменту. Вивчав управління, бізнес-процеси, фінанси та роботу організацій.
+        </p>
+      </article>
+
+      <article class="timeline-item left">
+        <div class="timeline-marker edu"></div>
+        <h3 class="timeline-card-title">Кременчуцький колегіум №25, м. Кременчук</h3>
+        <div class="timeline-card-sub">Повна загальна середня освіта</div>
+        <div class="timeline-card-date">
+          <time datetime="2013">2013</time> – <time datetime="2015">2015</time>
+        </div>
+        <p class="timeline-card-text">
+          Отримав повну загальну середню освіту, активно брав участь у навчальних
+          та позакласних заходах.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ПАНЕЛІ З ЛОГОТИПАМИ ШІ -->
+  <section class="ai-logos-section">
+    <div class="ai-logos-inner">
+      <h3 class="ai-logos-title">Якими штучним інтелектом я користуюся в повсякденному житті:</h3>
+      <div class="ai-logos-row">
+        <div class="ai-logo-card">
+          <!-- Скріншот / логотип 1 -->
+          <a href="https://chatgpt.com/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-logo-1.png" alt="Логотип ШІ 1">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <!-- Скріншот / логотип 2 -->
+          <a href="https://deepmind.google/models/gemini/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-logo-2.png" alt="Логотип ШІ 2">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <!-- Скріншот / логотип 3 -->
+          <a href="https://grok.com/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-logo-3.png" alt="Логотип ШІ 3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ДОДАТКОВІ ПАНЕЛІ ДЛЯ ОКРЕМИХ ЗАВДАНЬ -->
+  <section class="ai-logos-section">
+    <div class="ai-logos-inner">
+      <h3 class="ai-logos-title">Для окремих завдань мені дуже допомагають:</h3>
+
+      <!-- Перший ряд з 3 панелей -->
+      <div class="ai-logos-row">
+        <div class="ai-logo-card">
+          <a href="https://elevenlabs.io/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-1.png" alt="Додатковий інструмент ШІ 1">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <a href="https://gamma.app/uk" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-2.png" alt="Додатковий інструмент ШІ 2">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <a href="https://chatgpt.com/codex" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-3.png" alt="Додатковий інструмент ШІ 3">
+          </a>
+        </div>
+      </div>
+
+      <!-- Другий ряд з 3 панелей -->
+      <div class="ai-logos-row" style="margin-top:16px;">
+        <div class="ai-logo-card">
+          <a href="https://openai.com/index/dall-e-2/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-4.png" alt="Додатковий інструмент ШІ 4">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <a href="https://qwen.ai/research" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-5.png" alt="Додатковий інструмент ШІ 5">
+          </a>
+        </div>
+        <div class="ai-logo-card">
+          <a href="https://wan.video/" target="_blank" rel="noreferrer noopener">
+            <img src="resources/ai-extra-6.png" alt="Додатковий інструмент ШІ 6">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
